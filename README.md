@@ -11,3 +11,40 @@ A web-based attendance system built with Flask that uses facial recognition to m
 - **No Database**: Uses file-based storage for simplicity.
 
 ## Project Structure
+
+attendance_system/
+│
+├── static/                   # CSS and JS files
+│   ├── style.css
+│   └── script.js
+├── templates/                # HTML templates
+│   ├── index.html
+│   ├── enroll.html
+│   └── attendance.html
+├── enrolled_students/        # Folder for student images
+├── attendance_log.txt        # Attendance log file
+├── app.py                    # Flask application
+├── requirements.txt          # Python dependencies
+└── README.md                 # This file
+
+
+
+## Prerequisites
+- Python 3.8 or higher
+- A webcam (or IP camera with URL support)
+- Git (for cloning the repository)
+
+## Setup Instructions
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/attendance_system.git
+   cd attendance_system
+2. **Install Dependencies**
+   pip install -r requirements.txt
+
+
+3. **enrolled_students folder**
+   mkdir enrolled_students
+
+4. ** Run the Application **
+    python main.py
