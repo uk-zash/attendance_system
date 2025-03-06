@@ -7,26 +7,6 @@ A web-based attendance system built with Flask that uses facial recognition to m
 - **Single Daily Attendance**: Marks each student "Present" only once per day.
 - **Dynamic Enrollment**: Captures the current camera frame for new students, requiring only a name input.
 - **Attendance Log**: View a table of attendance records.
-- **Professional UI**: Modern design with navigation, status feedback, and styled tables.
-- **No Database**: Uses file-based storage for simplicity.
-
-## Project Structure
-
-attendance_system/
-│
-├── static/                   # CSS and JS files
-│   ├── style.css
-│   └── script.js
-├── templates/                # HTML templates
-│   ├── index.html
-│   ├── enroll.html
-│   └── attendance.html
-├── enrolled_students/        # Folder for student images
-├── attendance_log.txt        # Attendance log file
-├── app.py                    # Flask application
-├── requirements.txt          # Python dependencies
-└── README.md                 # This file
-
 
 
 ## Prerequisites
