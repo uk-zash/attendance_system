@@ -26,5 +26,5 @@ A web-based attendance system built with Flask that uses facial recognition to m
 3. **enrolled_students folder**
    mkdir enrolled_students
 
-4. ** Run the Application **
+4. **Run the Application**
     python main.py
