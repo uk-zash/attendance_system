@@ -8,14 +8,24 @@
 <body>
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('enroll') }}">Enroll Student</a>
+        <a href="{{ url_for('enroll') }}">Enroll New Student</a>
         <a href="{{ url_for('attendance') }}">Attendance Log</a>
+        <a href="{{ url_for('student') }}">Enrolled Students</a>
     </nav>
     <h1>Enroll New Student</h1>
     <p>The current camera frame will be used as the student's photo. Ensure a face is visible.</p>
+
+    <div class="video-container"><img src="{{ url_for('video_feed') }}" id="video-feed"></div>
+
+    {% if error %}
+    <div class="error-message">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+
     <form method="POST">
         <label for="name">Student Name:</label>
-        <input type="text" id="name" name="name" placeholder="e.g., john_doe" required><br>
+        <input type="text" id="name" name="name" placeholder="e.g., Harsh" required><br>
         <button type="submit">Enroll</button>
     </form>
 </body>

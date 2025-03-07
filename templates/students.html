@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enrolled Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+    /* Styling for the student list */
+.students-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.student-card {
+    width: 200px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+    transform: translateY(-10px);
+}
+
+.student-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.student-info h3 {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* If no students are enrolled */
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+}
+
+</style>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('enroll') }}">Enroll New Student</a>
+        <a href="{{ url_for('attendance') }}">Attendance Log</a>
+        <a href="{{ url_for('student') }}">Enrolled Students</a>
+    </nav>
+    <h1>Enrolled Students</h1>
+    
+    {% if students %}
+        <div class="students-list">
+            {% for student in students %}
+                <div class="student-card">
+                    <!-- Display student's photo -->
+                    <div class="student-photo">
+                        <img src="{{ url_for('serve_student_photo', filename=student + '.jpg') }}" alt="{{ student }}'s photo">
+                    </div>
+                    <!-- Display student's name -->
+                    <div class="student-info">
+                        <h3>{{ student }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No students enrolled yet.</p>
+    {% endif %}
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

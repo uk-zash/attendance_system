@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>School Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            color: #333;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .student-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 15px;
+            width: 220px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .student-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .student-photo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .student-info h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .student-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .badge {
+            font-size: 20px;
+            color: #28a745;
+        }
+
+        .badge.special {
+            font-size: 24px;
+            color: #ffc107;
+        }
+
+        .no-students {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('enroll') }}">Enroll New Student</a>
+        <a href="{{ url_for('attendance') }}">Attendance Log</a>
+        <a href="{{ url_for('student') }}">Enrolled Students</a>
+    </nav>
+
+    <h1>Attendance Dashboard</h1>
+
+    <div class="dashboard">
+        {% if students %}
+            {% for name, streak in streaks.items() %}
+                <div class="student-card">
+                    <div class="student-photo">
+                        <img src="{{ url_for('serve_student_photo', filename=name + '.jpg') }}" alt="{{ name }}'s photo">
+                    </div>
+                    <div class="student-info">
+                        <h3>{{ name }}</h3>
+                        <p>Streak: {{ streak }} days</p>
+                    </div>
+                    <div class="badge {% if streak >= 5 %}special{% endif %}">
+                        {% if streak >= 5 %}🏅{% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-students">No students enrolled yet. Please enroll new students.</p>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
