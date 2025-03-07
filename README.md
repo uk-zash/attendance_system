@@ -7,7 +7,24 @@ A web-based attendance system built with Flask that uses facial recognition to m
 - **Single Daily Attendance**: Marks each student "Present" only once per day.
 - **Dynamic Enrollment**: Captures the current camera frame for new students, requiring only a name input.
 - **Attendance Log**: View a table of attendance records.
-- **Professional UI**: Modern design with navigation, status feedback, and styled tables.
-- **No Database**: Uses file-based storage for simplicity.
 
-## Project Structure
+
+## Prerequisites
+- Python 3.8 or higher
+- A webcam (or IP camera with URL support)
+- Git (for cloning the repository)
+
+## Setup Instructions
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/attendance_system.git
+   cd attendance_system
+2. **Install Dependencies**
+   pip install -r requirements.txt
+
+
+3. **enrolled_students folder**
+   mkdir enrolled_students
+
+4. **Run the Application**
+    python main.py
